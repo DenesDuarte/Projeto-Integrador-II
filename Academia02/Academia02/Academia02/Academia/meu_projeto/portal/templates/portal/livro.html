@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Livros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="card">  
+        <div class="card-body">
+            <h4>LIVROS</h4>
+            <hr>
+            <a class="btn btn-success" href="{% url 'livro_add' %}"> Adicionar</a>
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Subtitulo</th>
+                    <th>Autor</th>
+                    <th>Editora</th>
+                    <th>Formato</th>
+                    <th>Data de Lancamento</th>
+                    <th>Isbn</th>
+                    <th>Número de Páginas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for livro in livros %}
+                <tr>
+                    <td>{{ livro.titulo }}</td>
+                    <td>{{ livro.subtitulo }}</td>
+                    <td>{{ livro.autor }}</td>
+                    <td>{{ livro.editora }}</td>
+                    <td>{{ livro.formato }}</td>
+                    <td>{{ livro.data_lancamento }}</td>
+                    <td>{{ livro.isbn }}</td>
+                    <td>{{ livro.numero_paginas }}</td>
+                    <td>
+                        <a class="btn btn-warning" href="livro_edit/{{livro.id}}">Editar</a>
+                        <a class="btn btn-danger" href="livro_delete/{{livro.id}}" onclick="return confirm('Tem certeza que deseja excluir esse livro?')" >Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+               
+            </tbody>
+            </table>
+        </div>
+    </div>
